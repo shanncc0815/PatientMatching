@@ -50,7 +50,7 @@ def main():
   print("Input dataset: %s" % args.input_fname)
   print("Output directory: %s" % args.output_directory)
 
-  if !os.path.exists(args.output_directory):
+  if not os.path.exists(args.output_directory):
     os.makedirs(args.output_directory)    
 
   if os.path.isfile(args.input_fname) and os.path.isdir(args.output_directory):

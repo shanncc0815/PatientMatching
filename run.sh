@@ -13,6 +13,10 @@
 # Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
 
 
-# Step 1: Exploratory Analysis to examine basic statics of each field
+# Step 0: Exploratory Analysis to examine basic statics of each field
 python3 src/ExploratoryAnalysis.py original-dataset/FInalDataset_1M.csv meta1
+
+# Step 1: Normalize V1: Gender, Suffix, ZIP and usps Address.
+python3 src/Normalize_V1_Gender_Suffix_ZIP_uspsAddress.py original-dataset/FInalDataset_1M.csv meta2
+
 
