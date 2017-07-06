@@ -99,7 +99,9 @@ def main():
     idxZip10= input_df['ZIP'].str.len() == 10
 
     # Take the first 5 digits as Zip5, and ignore all others
-    input_df.loc[idxZip5,'Zip4'] = input_df.loc[idxZip5,'ZIP'].str[0:5]
+    input_df.loc[idxZip5,'Zip5'] = input_df.loc[idxZip5,'ZIP'].str[0:5]
+
+    # Take the last 4 digits of 9 digits and 10 digits
     input_df.loc[idxZip9,'Zip4'] = input_df.loc[idxZip9,'ZIP'].str[5:9]
     input_df.loc[idxZip10,'Zip4'] = input_df.loc[idxZip10,'ZIP'].str[6:10]
 

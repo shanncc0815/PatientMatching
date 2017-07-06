@@ -14,9 +14,18 @@
 
 
 # Step 0: Exploratory Analysis to examine basic statics of each field
-python3 src/ExploratoryAnalysis.py original-dataset/FInalDataset_1M.csv meta1
+#python3 src/ExploratoryAnalysis.py original-dataset/FInalDataset_1M.csv meta0
 
 # Step 1: Normalize V1: Gender, Suffix, ZIP and usps Address.
-python3 src/Normalize_V1_Gender_Suffix_ZIP_uspsAddress.py original-dataset/FInalDataset_1M.csv meta2
+#python3 src/Normalize_V1_Gender_Suffix_ZIP_uspsAddress.py original-dataset/FInalDataset_1M.csv meta1
+
+# Step 2: Normalize V2: use usps webtool to normalize Address
+python3 src/Normalize_V2_uspsWebtool.py original-dataset/FInalDataset_1M.csv 0 1000000 meta2
+
+## This step can be subdivided into smaller jobs.
+#python3 src/Normalize_V2_uspsWebtool.py original-dataset/FInalDataset_1M.csv 0 250000 meta2 &
+#python3 src/Normalize_V2_uspsWebtool.py original-dataset/FInalDataset_1M.csv 250000 500000 meta2 &
+#python3 src/Normalize_V2_uspsWebtool.py original-dataset/FInalDataset_1M.csv 500000 750000 meta2 &
+#python3 src/Normalize_V2_uspsWebtool.py original-dataset/FInalDataset_1M.csv 750000 1000000 meta2 &
 
 
