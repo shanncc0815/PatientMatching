@@ -48,7 +48,7 @@ def main():
 
   parser.add_argument('end_idx', metavar='end-idx', default='1000000', type=int, help='end index.')
 
-  parser.add_argument('output_directory', metavar='output-directory', default='meta3', type=str,
+  parser.add_argument('output_directory', metavar='output-directory', default='meta2', type=str,
                         help='Directory to store metadata from usps webtool.')
   args = parser.parse_args()
 

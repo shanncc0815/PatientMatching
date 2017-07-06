@@ -20,7 +20,7 @@
 #python3 src/Normalize_V1_Gender_Suffix_ZIP_uspsAddress.py original-dataset/FInalDataset_1M.csv meta1
 
 # Step 2: Normalize V2: use usps webtool to normalize Address
-python3 src/Normalize_V2_uspsWebtool.py original-dataset/FInalDataset_1M.csv 0 1000000 meta2
+#python3 src/Normalize_V2_uspsWebtool.py original-dataset/FInalDataset_1M.csv 0 1000000 meta2
 
 ## This step can be subdivided into smaller jobs.
 #python3 src/Normalize_V2_uspsWebtool.py original-dataset/FInalDataset_1M.csv 0 250000 meta2 &
@@ -28,4 +28,8 @@ python3 src/Normalize_V2_uspsWebtool.py original-dataset/FInalDataset_1M.csv 0 1
 #python3 src/Normalize_V2_uspsWebtool.py original-dataset/FInalDataset_1M.csv 500000 750000 meta2 &
 #python3 src/Normalize_V2_uspsWebtool.py original-dataset/FInalDataset_1M.csv 750000 1000000 meta2 &
 
+
+# Step 3: Merge V3: combine Normalize V2 results and examine next steps
+python3 src/Merge_V2_uspsWebtool.py original-dataset/FInalDataset_1M.csv meta2 meta3
+python3 src/ExploratoryAnalysis.py meta3/uspsAddress_full_V2.csv meta3
 
