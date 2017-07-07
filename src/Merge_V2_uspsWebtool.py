@@ -87,7 +87,7 @@ def main():
       result=re.search('(?is)<Description[^>]*>(.+?)</Description>', rtext)
       input_df.loc[i,'Description'] = result.group(1) if (result != None) else  ""
 
-    merge_df.to_csv('%s/input_df.csv' % args.output_directory, index = False)
+    input_df.to_csv('%s/input_df.csv' % args.output_directory, index = False)
 
     # Parse usps Address information, including main address, City, State, and Zip codes.
     # It was relatively fast - only took several minutes.
