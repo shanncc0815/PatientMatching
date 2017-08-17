@@ -75,8 +75,9 @@ PHONE_dict = rbind(PHONE_dict, cbind(EID, PHONE4))
 
 PHONE_dict = as.data.frame(PHONE_dict[-which(PHONE_dict[,2] == ""),])
 colnames(PHONE_dict) = c("EID","PHONE")
-PHONE_key = unique(PHONE_dict$PHONE)
+#PHONE_key = unique(PHONE_dict$PHONE)
 
+save(PHONE_dict, file="/home/chen/workspace/git_examples/PatientMatching/meta6/PHONE_dict.RData")
 #format(Sys.time(), "%H-%M-%S")
 #PHONE_list = lapply(1:length(PHONE_key), function(X) as.character(PHONE_dict$EID[which(PHONE_dict$PHONE == PHONE_key[X])]))
 #format(Sys.time(), "%H-%M-%S")
@@ -101,11 +102,11 @@ input_df$Y = sapply(strsplit(input_df$DOB, split = "/"), function(X) X[3]) # FIE
 
 #load("meta6/RL_Identity_V1.RData"), manual version
 
-load("meta6/RL_Identity_V2.RData")
+load("/home/chen/workspace/git_examples/PatientMatching/meta6/RL_Identity_V2.RData")
 match_idx = match(Identity$eID, input_df$EnterpriseID)
 sub_df = input_df[match_idx,]
 #save(input_df, PHONE_dict, PHONE_key, Identity, file="meta6/uspsAddress_Merge_V6_2.RData")
-save.image(file="meta6/uspsAddress_Merge_V6_2.RData")
+save.image(file="/home/chen/workspace/git_examples/PatientMatching/meta6/uspsAddress_Merge_V6_2.RData")
 
 print(format(Sys.time(), "%H-%M-%S"))
 

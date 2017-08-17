@@ -77,7 +77,74 @@ Rscript src/RL_CreateIdentity_EMAIL_v2.r
 # Merge V6: combine the full matrix meta4/uspsAddress_SSN_V4.csv with submatrix meta6/uspsAddress_clean_sub_V6.csv
 # output: meta6/uspsAddress_Merge_V6_2.csv  meta6/uspsAddress_Merge_V6_2.RData
 Rscript src/uspsAddress_Merge_V6_2.r
+python3 src/ExploratoryAnalysis.py meta6/uspsAddress_Merge_V6_2.csv meta6
 
-# Testeing different blocking strategy
-Rscript src/RL_TestBlocking.r
+# Testing different blocking strategies
+Rscript	src/RL_TestBlocking_jarowinkler.r
+Rscript	src/RL_TestBlocking_levenshteinDist.r
+Rscript	src/RL_TestBlocking_levenshteinSim.r
+
+# Compare PHONE FIELDs
+# Store in /home/chen/workspace/git_examples/PatientMatching/meta7/CompareAddressRData
+Rscript	src/RL_ComparePHONE_jarowinkler.r
+Rscript	src/RL_ComparePHONE_levenshteinDist.r
+Rscript	src/RL_ComparePHONE_levenshteinSim.r
+
+# Test different classifiers, including CMethod = c("svm","rpart","ada","bagging","bumping")
+# bagging=bagging with classification tree
+Rscript src/testClassifiers.r
+Rscript src/testClassifier_Bagging.r
+
+# Test remove FIELDs, not very good
+Rscript src/Test_RemoveFIELD.r
+
+# Test weight-based classification, not very good
+Rscript src/testEpiEmClassification.r
+
+# Quick test, not to store model
+Rscript src/testClassificationVoting_V1F1_nomodel.r
+Rscript src/testClassificationVoting_V2F2_nomodel.r
+
+# Train PHONE_jarowinkler with 100 random seeds
+# Output in /home/chen/workspace/git_examples/PatientMatching/meta7/Voting_v2/
+Rscript src/trainClassificationVoting_V2F1.r
+
+# Train EMAIL_PHONE_jarowinkler with 20 random seeds
+# Output in /home/chen/workspace/git_examples/PatientMatching/meta7/Voting_v2/
+Rscript src/trainClassificationVoting_V2F2.r
+
+# Test PHONE_jarowinkler on all data
+# Output in /media/chen/4TB/PatientMatching/meta8/Voting_v3/, => done
+Rscript src/testClassificationVoting_V3F1.r
+# Aggregate V3F1 results
+Rscript src/AggregateVoting_V3F1.r
+
+# Test EMAIL_PHONE_jarowinkler on all data
+# Output in /media/chen/4TB/PatientMatching/meta8/Voting_v4/, => only seed 1, not done yet
+Rscript src/testClassificationVoting_V4F2.r
+
+
+#####################################################3
+# Compare MRN FIELD
+# Store in /media/chen/4TB/PatientMatching/meta8/CompareAddressRData
+Rscript src/RL_ComparePHONE_MRN_jarowinkler.r
+
+# Train PHONE_jarowinkler + MRN with 100 random seeds
+# Output in /media/chen/4TB/PatientMatching/meta8/Voting_v5/
+Rscript src/trainClassificationVoting_V5F1.r
+
+# Train EMAIL_PHONE_jarowinkler + MRN with 20 random seeds, => done
+# Output in /media/chen/4TB/PatientMatching/meta8/Voting_v6/
+Rscript src/trainClassificationVoting_V6F2.r
+
+# Test PHONE_jarowinkler + MRN on all data
+# Output in /media/chen/4TB/PatientMatching/meta8/Voting_v7/ (running)
+Rscript src/testClassificationVoting_V7F1.r
+
+# Test EMAIL_PHONE_jarowinkler on all data
+# Output in /media/chen/4TB/PatientMatching/meta8/Voting_v8/, => not done yet
+Rscript src/testClassificationVoting_V8F2.r
+
+
+
 
