@@ -1,4 +1,4 @@
-rm(list=ls())
+m(list=ls())
 
 library(RecordLinkage)
 options(width=100)
@@ -136,9 +136,52 @@ tmp6 = diffPair("original-dataset/submit035_Label_true.csv","submit_sampc001/uns
 ## => original-dataset/submit035_Label_true.csv has 919 (899+20 or 918+1) unique pairs       => 918 TP and 1 FP
 ##  can consider FIRST, GENDER
 
-
+# cat submit035_Label_true.csv | sort | uniq > unsubmit_Label_true_918TP.csv
+# vi   [remove 13941996,14187510,1]
 
 tmp7 = diffPair("original-dataset/submit036_Label_false.csv","submit_sampc001/submit011_Vote1000g0_V7F1_55530.csv","src_submit/tmp7.csv")
+
+# cat submit036_Label_false.csv | sort | uniq > unsubmit_Label_false_1622TN.csv => containi 22 TP
+#  submit041_tmp7.csvcommon_19TP.csv  => 19 cases
+#  submit055_tmp7_batch2_attemp5_15812432_15874456.csv
+#  submit059_tmp7_batch1_attempt1_15379857_15660214.csv
+#  submit062_tmp7_batch2_attempt3_15553702_15564884.csv
+
+# cat submit041_tmp7.csvcommon_19TP.csv submit055_tmp7_batch2_attemp5_15812432_15874456.csv submit059_tmp7_batch1_attempt1_15379857_15660214.csv submit062_tmp7_batch2_attempt3_15553702_15564884.csv > unsubmit_Label_false_22TP.csv  #  22 cases
+tmp11 = diffPair("submit_sampc001/unsubmit_Label_false_1622TN.csv","submit_sampc001/unsubmit_Label_false_22TP.csv","tmp_submit/unsubmit_Label_false_1600TN.csv")
+tmp = combinePair("submit_sampc001/unsubmit_Label_false_22TP.csv","submit_sampc001/unsubmit_Label_true_918TP.csv","submit_sampc002/submit015_Label_true_932TP.csv")
+
+" cat submit_sampc002/submit015_Label_true_932TP.csv submit_sampc001/submit079.28_additionalPairs_Batch2_CBA_2001to2025_1TP_attempt1_15430336_15881893.csv submit_sampc001/submit089.28_additionalPairs_Batch2_CCA_attempt1_15622465_15900506.csv | sort | uniq > tmp_submit/unsubmit_Label_true_add2_934TP.csv  "
+
+tmp1 = combinePair("tmp_submit/unsubmit_Label_true_add2_934TP.csv","submit_sampc001/submit011_Vote1000g0_V7F1_55530.csv","tmp_submit/unsubmit_Vote1000g0_V7F1_55553_TP.csv")
+dim(tmp1)
+#[1] 55553     3
+
+tmp2 = combinePair("tmp_submit/unsubmit_Label_true_add2_934TP.csv","submit_sampc001/submit010_Vote1000_V7F1_52557.csv","tmp_submit/unsubmit_Vote1000_V7F1_52592_TP.csv")
+dim(tmp2)
+#[1] 52592     3
+
+tmp3 = combinePair("tmp_submit/unsubmit_Label_true_add2_934TP.csv","SUBMITwithManual/submit085_AllPos.csv","tmp_submit/unsubmit_AllPos_40593.csv")
+dim(tmp3)
+#[1] 40593     3
+
+tmp = diffPair("tmp_submit/unsubmit_Vote1000_V7F1_52592_TP.csv","tmp_submit/unsubmit_AllPos_40593.csv","tmp_submit/unsubmit_diff_52592_40593_12025.csv")
+dim(tmp)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 tmp8 = diffPair("original-dataset/submit036_Label_false.csv","submit_sampc001/unsubmit_Vote1000_allPairs.csv","src_submit/tmp8.csv")
 
 examineCSV <- function(inputPairName, input_df) {

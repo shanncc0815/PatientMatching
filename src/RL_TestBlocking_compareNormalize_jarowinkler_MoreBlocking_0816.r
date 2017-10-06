@@ -121,6 +121,11 @@ examineCSV("src_submit/tmp8.csv", input_df)
 examineCSV("src_submit/unsubmit079.28_additionalPairs_Batch2_CBA_2001to2025.csv", input_df)
 examineCSV("src_submit/submit086.28_additionalPairs_Batch2_CCA_4576to4675.csv", input_df)
 
+
+#cat submit063_Label_true_Clean_51additionalTP.csv  submit079.28_additionalPairs_Batch2_CBA_2001to2025_1TP_attempt1_15430336_15881893.csv submit089.28_additionalPairs_Batch2_CCA_attempt1_15622465_15900506.csv '/home/chen/workspace/git_examples/PatientMatching/submit/submit085_AllPos.csv' > '/home/chen/workspace/git_examples/PatientMatching/submit/unsubmit_AllPos_40477.csv'
+
+#cat submit063_Label_true_Clean_51additionalTP.csv  submit079.28_additionalPairs_Batch2_CBA_2001to2025_1TP_attempt1_15430336_15881893.csv submit089.28_additionalPairs_Batch2_CCA_attempt1_15622465_15900506.csv '/home/chen/workspace/git_examples/PatientMatching/submit_sampc001/submit011_Vote1000g0_V7F1_55530.csv' > '/home/chen/workspace/git_examples/PatientMatching/submit_sampc001/submit090_Vote1000g0_V7F1_55530_53.csv' 
+
 tmp9 = diffPair("submit_sampc001/submit090_Vote1000g0_V7F1_55530_53.csv","submit_sampc001/submit011_Vote1000g0_V7F1_55530.csv","src_submit/tmp9.csv")
 #[1] "allPair file submit_sampc001/submit090_Vote1000g0_V7F1_55530_53.csv (55583 pairs), set1Pair file submit_sampc001/submit011_Vote1000g0_V7F1_55530.csv (55530 pairs), common 55530 pairs, additional 23 pairs are stored in src_submit/tmp9.csv"
 examineCSV("src_submit/tmp9.csv", input_df)

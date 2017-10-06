@@ -25,7 +25,7 @@ eval_pairs = allPairs
 
 allFN = NULL
 allFP = NULL
-for(i in 114:RandTotal) {
+for(i in 1:RandTotal) {
     set.seed(i)
     print("##################")
     print(paste(format(Sys.time(), "%H:%M:%S  Training with "), "bagging, seed=", i, " ", META[meta_flag], sep=""))

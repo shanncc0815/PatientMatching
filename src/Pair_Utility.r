@@ -22,9 +22,11 @@ diffPair <- function(allPairName,set1PairName,outPairName) {
       print(sprintf('allPair file %s (%d pairs), set1Pair file %s (%d pairs), common %d pairs, additional %d pairs are stored in %s', allPairName, dim(PA)[1], set1PairName, dim(P1)[1], length(commonID), length(P2), outPairName))
       write.table(set2Pairs,file=outPairName,row.names=FALSE,col.names=F,append=F,quote=F,sep=",")
 
-      commonPairs = data.frame(cbind(sapply(strsplit(commonID, split="_"),function(x) x[1]),sapply(strsplit(commonID, split="_"),function(x) x[2]),1))
-      colnames(commonPairs) = c("V1","V2","V3")
-      write.table(commonPairs,file=paste(outPairName,"common.csv",sep=""),row.names=FALSE,col.names=F,append=F,quote=F,sep=",")
+      if(length(commonID) > 0) {
+          commonPairs = data.frame(cbind(sapply(strsplit(commonID, split="_"),function(x) x[1]),sapply(strsplit(commonID, split="_"),function(x) x[2]),1))
+          colnames(commonPairs) = c("V1","V2","V3")
+          write.table(commonPairs,file=paste(outPairName,"common.csv",sep=""),row.names=FALSE,col.names=F,append=F,quote=F,sep=",")
+      }
 
     } else {
       print(sprintf('allPair file %s (%d pairs), set1Pair file %s (%d pairs), common %d pairs, no additional pairs are stored', allPairName, dim(PA)[1], set1PairName, dim(P1)[1], length(commonID)))
